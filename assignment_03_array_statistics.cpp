@@ -42,3 +42,63 @@
 #include <iostream>
 using namespace std;
 
+double calculateSum(double arr[], int n) {
+    double total = 0;
+    for (int i = 0; i < n; i++) { 
+        total += arr[i];
+    }
+    return total;
+}
+double calculateAverage(double arr[], int n) {
+    return calculateSum(arr, n) / n;
+}
+double findMax(double arr[], int n) {
+    double maxVal = arr[0];
+    for (int i = 1; i < n; i++){
+        if (arr[i] > maxVal) {
+            maxVal = arr[i];
+        }
+    }
+    return maxVal;
+}
+double findMin(double arr[], int n) {
+    double minVal = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < minVal) {
+            minVal = arr[i];
+        }
+    }
+    return minVal;
+}
+int main() {
+    int n;
+
+    cout << "How many numbers? ";
+    cin >> n;
+    if (n <= 0) {
+         cout << "Error: Number of elements must be greater than 0." << endl;
+         return 0;
+    }
+    double* numbers = new double[n];
+
+     for (int i = 0; i < n; i++) {
+          cout << "Enter number " << (i + 1) << ": ";
+          cin >> numbers[i];
+    }
+double sum = calculateSum(numbers, n);
+double avg = calculateAverage(numbers, n);
+double maxVal = findMax(numbers, n);
+double minVal = findMin(numbers, n);
+
+cout << "\nResults:" << endl;
+cout << "Sum:      " << sum << endl;
+cout << "Average:  " << avg << endl;
+cout << "Maximum:  " << maxVal << endl;
+cout << "Minimum:  " << minVal << endl;
+
+delete[] numbers;
+
+return 0;
+}
+
+
